@@ -55,7 +55,6 @@ namespace Student_Subject_Evaluation.MVVM.View
         }
 
         //method for the save excel file
-        //the problem is how we can put the data on the excel from datagrid :((
         private async Task saveExcelFile(FileInfo file)
         {
             deleteIfExists(file);
