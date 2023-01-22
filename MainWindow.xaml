@@ -1,0 +1,157 @@
+﻿<Window x:Class="Student_Subject_Evaluation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:Student_Subject_Evaluation"
+        xmlns:viewModel="clr-namespace:Student_Subject_Evaluation.MVVM.View_Model"
+        xmlns:view="clr-namespace:Student_Subject_Evaluation.MVVM.View"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        Height="750" Width="1360"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        WindowStyle="SingleBorderWindow"
+        BorderThickness="1"
+        BorderBrush="OrangeRed"
+        WindowState="Normal"
+        >
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+    <Border Background = "#FFDF612B">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="298"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!--To determine the user-->
+            <TextBox x:Name="UserPass" 
+                       Text="Welcome Back!" 
+                       Foreground="White"
+                       FontSize="16" Margin="138,16,0,0"
+                       Padding="0"
+                       Height="30" d:LayoutOverrides="Height, LeftMargin, RightMargin, TopMargin, BottomMargin"
+                       HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden"/>
+            <TextBox x:Name="_ID" 
+                       Text="0" 
+                       Foreground="White"
+                       FontSize="16" Margin="105,18,0,0"
+                       Padding="0"
+                       Height="30" d:LayoutOverrides="Height, LeftMargin, RightMargin, TopMargin, BottomMargin"
+                       HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Width="11"/>
+            <TextBox x:Name="_Name" 
+                       Text="Name" 
+                       Foreground="White"
+                       FontSize="16" Margin="105,41,0,0"
+                       Padding="0"
+                       Height="30" d:LayoutOverrides="Height, LeftMargin, RightMargin, TopMargin, BottomMargin"
+                       HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Width="44"/>
+
+            <!--LOGO-->
+            <WrapPanel>
+                <StackPanel Orientation="Horizontal" Margin="73,60,71,85" >
+                    <Image x:Name="Plv_logo" Source="/Images/Plv-logo.png" Height="150" Width="150" HorizontalAlignment="Center" RenderTransformOrigin="0.641,-0.001" VerticalAlignment="Center" Margin="0,0,0,-7"/>
+                </StackPanel>
+            </WrapPanel>
+
+            <!--Label-->
+            <StackPanel>
+                <StackPanel Margin="0,238,0,0" VerticalAlignment="Bottom" Height="61" Width="291" HorizontalAlignment="Center">
+                    <TextBlock Text="PAMANTASAN NG LUNGSOD NG" 
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center" 
+                Foreground="White" 
+                FontFamily="Tienne" FontSize="12" Width="207" Height="17" Margin="26,0,0,0"/>
+                    <TextBlock Text="VALENZUELA" 
+                Foreground="White" 
+                FontSize="30" Padding="0"
+                FontWeight="Normal" 
+                FontStretch="Normal"
+                FontFamily="Tienne" Width="178" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!--Employee Menu Buttons-->
+            <WrapPanel Grid.Row="1" Orientation="Vertical" Margin="25,0,25,70">
+                <StackPanel Grid.Row="1" Margin="0,0,0,-10">
+                    <RadioButton x:Name="btn_Home" Content="Home"
+                             Height="40" Width="250"
+                             FontSize="22" Foreground="White"
+                             Margin="0,30,0,5"
+                             IsChecked="True"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding HomeViewCommand}"
+                             materialDesign:ButtonAssist.CornerRadius="10" VerticalAlignment="Top"
+                             />
+
+                    <RadioButton x:Name="btn_Account" Content="Account"
+                             Height="40" Width="250"
+                             FontSize="22" Foreground="White"
+                             Margin="0,0,0,5"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding AccountViewCommand}" VerticalAlignment="Top"/>
+
+                    <RadioButton x:Name="btn_Curriculum" Content="Curriculum"
+                             Height="40" Width="250"
+                             FontSize="22" Foreground="White"
+                             Margin="0,0,0,5"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding CurriculumViewCommand}" VerticalAlignment="Top"/>
+
+                    <RadioButton x:Name="btn_Evaluation" Content="Evaluation"
+                             Height="40" Width="250"
+                             FontSize="22" Foreground="White"
+                             Margin="0,0,0,5"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding EvaluationViewCommand}" VerticalAlignment="Top"/>
+
+                    <RadioButton x:Name="btn_Student" Content="Students"
+                             Height="40" Width="250"
+                             FontSize="22" Foreground="White"
+                             Margin="0,0,0,5"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding StudentViewCommand}" VerticalAlignment="Top"/>
+                    <RadioButton x:Name="btn_ActivityLog" Content="Activity Log"
+                             Height="40" Width="250"
+                             FontSize="22" Foreground="White"
+                             Margin="0,0,0,5"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding ActivityLogViewCommand}" VerticalAlignment="Top"/>
+
+                    <RadioButton x:Name="btn_logout" Content="Logout"
+                             Height="40" Width="250"
+                             FontSize="22" Foreground="White"
+                             Margin="0,0,0,5"
+                             Style="{StaticResource MenuButton}" Checked="btn_logout_Checked" VerticalAlignment="Top"/>
+                </StackPanel>
+            </WrapPanel>
+
+            <!--Date-->
+            <WrapPanel Grid.Row="1" Orientation="Vertical" Margin="52,0,52,0">
+                <TextBlock x:Name="date"  
+                       Foreground="White" Height="30" 
+                       FontWeight="Bold" 
+                       VerticalAlignment="Top" 
+                       Grid.Row="1" Margin="0,380,0,0" HorizontalAlignment="Left" Width="196" Padding="29,0,0,0" >
+                <Run Text=""/>
+                <Run Text="03/19/2022"/>
+                </TextBlock>
+            </WrapPanel>
+
+            <!--This is where we will put the user controls (pages)-->
+            <ContentControl Grid.RowSpan="2" Grid.Column="1"
+                            Content="{Binding CurrentView}"/>
+
+        </Grid>
+    </Border>
+</Window>

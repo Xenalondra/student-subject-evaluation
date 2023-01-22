@@ -1,0 +1,257 @@
+﻿<UserControl x:Class="Student_Subject_Evaluation.MVVM.View.Evaluation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:viewModel="clr-namespace:Student_Subject_Evaluation.MVVM.View_Model"
+             mc:Ignorable="d" 
+             Height="auto" Width="Auto"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch">
+
+    <UserControl.DataContext>
+        <viewModel:EvaluationViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Border Background="white" Grid.RowSpan="2">
+            <StackPanel Margin="80,25,50,0" Height="67" VerticalAlignment="Top">
+                <TextBlock Text="Subject Evaluation" 
+                       Foreground="#FFDF612B" FontSize="45"  
+                       FontWeight="Bold"
+                       FontFamily="Tienne"
+                       VerticalAlignment="Center"/>
+            </StackPanel>
+        </Border>
+
+        <!--HELP-->
+        <StackPanel  Grid.Column="1">
+            <Button x:Name="btn_EXIT"
+                    Height="30"
+                    Width="30"
+                    Padding="1,0,0,0"
+                    Margin="0 20 20 0"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    materialDesign:RippleAssist.Feedback="#DD000000" 
+                    Click="btn_help_Click" ToolTip="Are you Having trouble using the system?" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                    <Image Source="/Images/help.png" Stretch="Uniform" Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                </Grid>
+            </Button>
+        </StackPanel>
+
+        <!--Orange line-->
+        <StackPanel Grid.Row="1">
+            <materialDesign:Card Height="10" 
+                    VerticalAlignment="Top" 
+                    Background="#f1ac6a" 
+                    d:LayoutOverrides="LeftMargin, RightMargin, 
+                    TopMargin, BottomMargin"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    materialDesign:ShadowAssist.ShadowEdges="Bottom"/>
+        </StackPanel>
+
+
+        <WrapPanel Grid.Row="1" Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <materialDesign:Card Height="auto" Width="auto"
+                             UniformCornerRadius="20"
+                             Background="White"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                             materialDesign:ShadowAssist.ShadowEdges="Bottom,Left" Margin="0,10,0,0">
+                <Grid Width="900">
+                    <Grid Width="300" Margin="30,30,93,20" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Label Content="EXPORT EVALUATION FORM:" FontFamily="Roboto" 
+                           FontWeight="Bold"
+                           FontSize="20" 
+                           Foreground="#e36934"
+                           HorizontalAlignment="Center" Margin="0,20,0,50" Height="27" VerticalAlignment="Top"/>
+
+                        <TextBox Text="0" FontFamily="Roboto" 
+                           FontWeight="Bold"
+                           FontSize="20" x:Name="txtUserID"
+                           Foreground="#e36934"
+                           HorizontalAlignment="Center" Margin="0,20,0,50" Height="27" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <TextBox Text="Name" FontFamily="Roboto" 
+                           FontWeight="Bold"
+                           FontSize="20" x:Name="txtUserName"
+                           Foreground="#e36934"
+                           HorizontalAlignment="Center" Margin="0,20,0,50" Height="27" VerticalAlignment="Top" Visibility="Hidden"/>
+                        <!--Deparrtment-->
+                        <ComboBox x:Name="cbx_evalDepartment" Margin="0,70,0,15"
+                          Style="{StaticResource MaterialDesignFilledComboBox}"
+                          materialDesign:HintAssist.Hint="Department"
+                          Width="250" Padding="10 0"
+                          FontFamily="Roboto"
+                          FontSize="16" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center" Height="40">
+                            <ComboBoxItem Content="Civil Engineering" />
+                            <ComboBoxItem Content="Electrical Engineering" />
+                            <ComboBoxItem Content="Information Technology" />
+                        </ComboBox>
+
+                        <!--Year Level-->
+                        <ComboBox x:Name="cbx_evalYearlevel" Margin="0,140,0,15"
+                          Style="{StaticResource MaterialDesignFilledComboBox}"
+                          materialDesign:HintAssist.Hint="Year Level"
+                          Width="250" Padding="10 0"
+                          FontFamily="Roboto"
+                          FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40">
+                            <ComboBoxItem Content="1" />
+                            <ComboBoxItem Content="2" />
+                            <ComboBoxItem Content="3" />
+                            <ComboBoxItem Content="4" />
+                        </ComboBox>
+
+                        <!--Semester-->
+                        <ComboBox x:Name="cbx_evalSemester"
+                          Style="{StaticResource MaterialDesignFilledComboBox}"
+                          materialDesign:HintAssist.Hint="Semester"
+                          Width="250" Padding="10 0"
+                          FontFamily="Roboto"
+                          FontSize="16" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center" Height="40" Margin="0,210,0,0">
+                            <ComboBoxItem Content="First Semester" />
+                            <ComboBoxItem Content="Second Semester" />
+                            <ComboBoxItem Content="Mid Year" />
+                        </ComboBox>
+
+                        <!--Batch Number-->
+                        <TextBox x:Name="txt_currYear" Margin="0,280,0,15"
+                           materialDesign:HintAssist.Hint="Curriculum Year" Padding="10 0 0 0"
+                                              FontSize="16" FontWeight="Bold" 
+                                              VerticalAlignment="Top" 
+                                              Height="35" Width="250"
+                                              Foreground="Black"
+                                              FontFamily="Roboto"
+                                              materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                              materialDesign:TextFieldAssist.HasClearButton="True"
+                                              materialDesign:HintAssist.Foreground="#f1ac6a" 
+                                              CaretBrush="#FFE36934" 
+                                              SelectionBrush="#FFF1AC6A"
+                                              TextWrapping="Wrap"
+                                              materialDesign:TextFieldAssist.TextFieldCornerRadius="4"
+                                              Style="{StaticResource MaterialDesignFilledTextBox}" HorizontalAlignment="Center"/>
+
+                        <!--Export Evaluation Form-->
+                        <Button x:Name="btn_exportEval"
+                            Content="EXPORT"
+                            Margin="0,421,0,50"
+                            BorderThickness="0" FontSize="16"
+                            Height="40" Width="150"
+                            FontFamily="Tienne" FontWeight="Bold"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Background="#f1ac6a" Foreground="White"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                            materialDesign:RippleAssist.Feedback="#DD000000" Click="btn_exportEval_Click" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                        <Button x:Name="btn_display"
+                            Content="LOAD DATA"
+                            Margin="0,291,0,50"
+                            BorderThickness="0" FontSize="16"
+                            Height="40" Width="150"
+                            FontFamily="Tienne" FontWeight="Bold"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Background="#f1ac6a" Foreground="White"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                            materialDesign:RippleAssist.Feedback="#DD000000" VerticalAlignment="Center" HorizontalAlignment="Center" Click="btn_display_Click"/>
+                    </Grid>
+
+                    <!--Datagrid for the Course Curriculum-->
+                    <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Left" Height="438" Margin="335,55,0,0" Width="508" ItemWidth="510" ItemHeight="400">
+                        <DataGrid x:Name="Export_list"
+                                            FontFamily="Roboto"
+                                            FontSize="12"
+                                            CanUserSortColumns="True"
+                                            CanUserAddRows="False"
+                                            materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+                                            materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2"
+                                            ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+                                            HorizontalContentAlignment="Stretch" 
+                                            VerticalContentAlignment="Stretch"
+                                            ToolTip="Data to be exported"
+                                            HorizontalAlignment="Left"
+                                            IsReadOnly="True" 
+                                            IsTextSearchEnabled="True" 
+                                            CanUserResizeRows="False" 
+                                            RowDetailsVisibilityMode="Visible"
+                                            CanUserReorderColumns="False" 
+                                            CanUserResizeColumns="False" 
+                                            GridLinesVisibility="None"
+                                            BorderThickness="0" 
+                                            Padding="5,5,5,5" 
+                                            FontWeight="Normal"
+                                            VerticalAlignment="Center"
+                                            CanUserDeleteRows="False" 
+                                            ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                                            ScrollViewer.CanContentScroll="True"
+                                            HorizontalScrollBarVisibility="Auto" Height="400" Width="516">
+
+                            <!--<ColumnHeader>-->
+                            <DataGrid.Columns>
+                                <DataGridTextColumn 
+                                                    Header="ID" 
+                                                    Binding="{Binding Subject_ID}"
+                                                    Width="50" 
+                                                    FontFamily="Tienne" 
+                                                    FontSize="12" 
+                                                    IsReadOnly="True"/>
+                                <DataGridTextColumn 
+                                                    Header="Code" 
+                                                    Binding="{Binding Subject_Code}"
+                                                    Width="70" 
+                                                    FontFamily="Tienne" 
+                                                    FontSize="12" 
+                                                    IsReadOnly="True"/>
+                                <DataGridTextColumn 
+                                                    Header="Subject Title" 
+                                                    Binding="{Binding Subject_Title}"
+                                                    Width="320" 
+                                                    FontFamily="Tienne" 
+                                                    FontSize="12" 
+                                                    IsReadOnly="True"/>
+                                <DataGridTextColumn 
+                                                    Header="Units" 
+                                                    Binding="{Binding Units}"
+                                                    Width="50" 
+                                                    FontFamily="Tienne" 
+                                                    FontSize="12" 
+                                                    IsReadOnly="True"/>
+                                <DataGridTextColumn 
+                                                    Header="Pre Req" 
+                                                    Binding="{Binding Pre_Req}"
+                                                    Width="60" 
+                                                    FontFamily="Tienne" 
+                                                    FontSize="12" 
+                                                    IsReadOnly="True"
+                                                />
+                                <DataGridTextColumn 
+                                                    Header="Semester" 
+                                                    Binding="{Binding Semester}"
+                                                    Width="100" 
+                                                    FontFamily="Tienne" 
+                                                    FontSize="12" 
+                                                    IsReadOnly="True"/>
+                                <DataGridTextColumn 
+                                                    Header="Year Level" 
+                                                    Binding="{Binding Yearlevel}"
+                                                    Width="60" 
+                                                    FontFamily="Tienne" 
+                                                    FontSize="12" 
+                                                    IsReadOnly="True"
+                                                />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </WrapPanel>
+                </Grid>
+
+
+            </materialDesign:Card>
+        </WrapPanel>
+
+    </Grid>
+</UserControl>
