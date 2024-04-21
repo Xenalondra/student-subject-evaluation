@@ -186,8 +186,7 @@ namespace Student_Subject_Evaluation.MVVM.View
         //We well delete the file every time we call the package
         private static void deleteIfExists(FileInfo file)
         {
-            if (file.Exists)
-            {
+            if (file.Exists) {
                 file.Delete();
             }
         }
@@ -293,7 +292,7 @@ namespace Student_Subject_Evaluation.MVVM.View
 
         public void addActivityLogout()
         {
-            string query = "INSERT INTO  `tbl_activitylog` ( `log_ID`, `log_Time`, `log_Date`, `log_UserID`, `log_Activity`, `log_Detail`)  VALUES (@ID, @time, @date, @user, @activity, @details)";
+            string query = "INSERT INTO `tbl_activitylog` ( `log_ID`, `log_Time`, `log_Date`, `log_UserID`, `log_Activity`, `log_Detail`)  VALUES (@ID, @time, @date, @user, @activity, @details)";
             MySqlConnection databaseConnection2 = new MySqlConnection(connectionString);
             MySqlCommand commandDatabase2 = new MySqlCommand(query, databaseConnection2);
             _ = commandDatabase2.Parameters.AddWithValue("@ID", 0);
